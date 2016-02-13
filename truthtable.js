@@ -10,6 +10,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 /*************************************************************************************/
+"use strict"
 const CHARS_SYMBOLS = {"charFalse":'F', "charTrue": 'V'};
 const IDENTIFICADOR = "&#9668;"; // Para indicar as linhas críticas.
 var validadeArgumento = '';      // string gerada ao habilitar checkbox de verificar validade do argumento.
