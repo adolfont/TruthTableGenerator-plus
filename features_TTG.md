@@ -55,6 +55,10 @@ A cor do identificador é igual a cor do valor lógico na respectiva linha. i.e.
 document.getElementById("lx").style.color = document.getElementById("conc").style.color;
 ```
 
+5. **Uso de expressões regulares para validar as FBF's** <br>
+Uma expressão para verifcar se fórmula é válida<br>
+Implementada em HTMl5. Dispensando a manipulação antes utilizada para verificar uma fórmula.
+
 
 ---
 ## FINALLY [finX]
