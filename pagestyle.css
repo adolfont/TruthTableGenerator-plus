@@ -92,7 +92,7 @@ a:active {color:#FFA04D;text-decoration:none;}    /* link selecionado */
 table.symbols {
   border:0;
   border-collapse: collapse;
-  cursor: none; /* [v2.2]3 */
+  /*cursor: none; /* [v2.2]3 */*/
 }
 
 table.symbols th {

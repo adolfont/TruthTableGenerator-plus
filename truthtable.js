@@ -149,7 +149,7 @@ function construct() {
 		win.document.open();
 		win.document.write('<pre>'+latextable+'</pre>');
 		win.document.close();
-		document.getElementById('tt').innerHTML = '<div class="center" style="text-align:center;color:red;">LaTex tables open in a new window.<br/>If no window opened, make sure your your browser<br/>isn\'t blocking popups.</div>';
+		document.getElementById('tt').innerHTML = '<div class="center" style="text-align:center;color:red;">A tabela em LaTex está aberta em outra janela (ou aba).<br/>Se não estiver aberto nenhuma janela<br/>confira se o seu navegador não bloqueou os popups.</div>';
 	}
 
 	/* var duration = (new Date().getTime() - time) / 1000; // Duração (em segundos) da geração da tabela. */
