@@ -10,7 +10,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 /*************************************************************************************/
-"use strict"
 const CHARS_SYMBOLS = {"charFalse":'F', "charTrue": 'V'};
 const IDENTIFICADOR = "&#9668;"; // Para indicar as linhas críticas.
 var validadeArgumento = '';      // string gerada ao habilitar checkbox de verificar validade do argumento.
@@ -32,9 +31,10 @@ function changeVisibility(idName, visible){
 // mostra(true) ou oculta(false) objetos de uma classe passada. [v2.0]5
 function changeVisibility_class(className, visible){
 	var elements = document.getElementsByClassName(className);
+	const N = elements.length;
 	const STATE = (visible) ? "visible" : "hidden";
 
-	for (var i=0; i < elements.length; i++)
+	for (var i = 0; i < N; i++)
 		elements[i].style.visibility = STATE;
 }
 
@@ -149,7 +149,7 @@ function construct() {
 		win.document.open();
 		win.document.write('<pre>'+latextable+'</pre>');
 		win.document.close();
-		document.getElementById('tt').innerHTML = '<div class="center" style="text-align:center;color:red;">LaTex tables open in a new window.<br/>If no window opened, make sure your your browser<br/>isn\'t blocking popups.</div>';
+		document.getElementById('tt').innerHTML = '<div class="center" style="text-align:center;color:red;">A tabela em LaTex está aberta em outra janela (ou aba).<br/>Se não estiver aberto nenhuma janela<br/>confira se o seu navegador não bloqueou os popups.</div>';
 	}
 
 	/* var duration = (new Date().getTime() - time) / 1000; // Duração (em segundos) da geração da tabela. */
@@ -163,7 +163,7 @@ function htmlTable(table,trees,flag) {
 	var rownum = table[0].length; // número de linhas da (primeira coluna) tabela geral.
 	var mcs = []; // indices of the main connectives
 
-	for(let i in trees)	mcs.push(mcindex(trees[i]));
+	for(var i=0;i<trees.length;i++)	mcs.push(mcindex(trees[i]));
 
 	var out = '<table id="tabela_verdade" class="truth">'; // start the html table
 	out += mkTHrow(table); // make the top th row
@@ -245,9 +245,9 @@ function htmlTable(table,trees,flag) {
 function textTable(table) {
 	var rownum = table[0].length;
 	var bcind =  []; // an array of arrays of ints, locations of biconditionals
-
-	for(let i in table)	bcind.push(bcInd(table[i][0]));
-
+	for(var i=0;i<table.length;i++) {
+		bcind.push(bcInd(table[i][0]));
+	}
 	var out = '';
 	out += mkrow(table,0); // make top row
 	out += '\r\n'+out.replace(/./g,'-')+'\r\n'; // put a string of '-' beneath the top row
@@ -284,8 +284,9 @@ function textTable(table) {
 function latexTable(table,trees) {
 	var rownum = table[0].length;
 	var mcs = []; // indices of the main connectives
-	for(let i in trees) mcs.push(mcindex(trees[i]));
-
+	for(var i=0;i<trees.length;i++) {
+		mcs.push(mcindex(trees[i]))
+	}
 	var out = '';
 	var dividers = [];// this variable gets updated by the mkrow function; sorry for the non-transparent code
 	var colnum = 0;// this variable gets updated by the mkrow function; sorry for the non-transparent code
@@ -323,6 +324,7 @@ function latexTable(table,trees) {
 				} else {
 					rw += latexchar(tbl[i][r][j])+' & '; // add cell char
 				}
+				if(r==0) {console.log(tbl[i][r][j]);}
 				if(r==0 && (tbl[i][r][j]=='(' || tbl[i][r][j]==')')) {
 					parloc.push(colnum+j);
 				}
